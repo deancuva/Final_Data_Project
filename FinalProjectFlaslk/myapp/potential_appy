@@ -6,32 +6,35 @@ class TravelBot:
     def respond(self, question):
         question = question.lower()
         filtered = self.csv_data.copy()
-
         score = pd.Series(0, index=filtered.index)
 
-        # Example scoring logic:
+        # Scoring temperature preference
         if "warm" in question:
-            score += (filtered['temperature'] - 65).clip(lower=0)  # prioritize warmth
+            score += (filtered['temperature'] - 65).clip(lower=0)
+        elif "cold" in question:
+            score += (65 - filtered['temperature']).clip(lower=0)
 
-        if "cold" in question:
-            score += (65 - filtered['temperature']).clip(lower=0)  # prioritize cold
-
+        # Scoring setting preference
         if "urban" in question:
-            score += (filtered['setting'] == 'urban') * 10
+            score += (filtered['setting'].str.lower() == 'urban') * 10
+        elif "rural" in question:
+            score += (filtered['setting'].str.lower() == 'rural') * 10
 
-        if "rural" in question:
-            score += (filtered['setting'] == 'rural') * 10
-
-        if "cheap flight" in question:
+        # Scoring cheap flight preference
+        if "cheap flight" in question or "cheap" in question or "budget" in question:
             max_cost = filtered['flight_cost'].max()
             normalized_cost = 1 - (filtered['flight_cost'] / max_cost)
             score += normalized_cost * 10
 
-        # Get top 3
+        # If no clear intent detected, return help message
+        if score.sum() == 0:
+            return "Tell me more about your preferences! You can mention temperature (warm/cold), setting (urban/rural), or flight budget."
+
+        # Get top results
         top_indices = score.nlargest(3).index
         top_cities = filtered.loc[top_indices, 'city']
 
         if not top_cities.empty:
-            return f"How about: {', '.join(top_cities)}?"
+            return f"Based on your preferences, consider: {', '.join(top_cities)}"
         else:
-            return "Hmm... I couldn't find anything matching that. Try asking differently!"
+            return "Hmm, I couldn't find a great match. Try adjusting your preferences!"
