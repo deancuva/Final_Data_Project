@@ -1,0 +1,92 @@
+body {
+    font-family: 'Georgia', Times New Roman, Merriweather, serif;
+    background-color: #F0FFF0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+input[type="text"]:hover,
+input[type="text"]:focus {
+    border-color: #FAFAD2;
+    box-shadow: 0 0 4px rgba(25, 118, 210, 0.2);
+}
+
+
+button {
+    padding: 12px 20px;
+    background-color: #20B2AA;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: #1565c0;
+    transform: translateY(-1px);
+}
+
+
+p {
+    font-size: 1.1em;
+    margin-top: 20px;
+    color: #444;
+}
+
+#botAnswer {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #20B2AA;
+    border-radius: 6px;
+    font-style: italic;
+    color: #222;
+}
+
+/* Optional: spacing and clarity */
+label, input[type="text"], button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Input styling for consistency */
+input[type="text"] {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Chat UI enhancement */
+.container {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Chat with Botty</h1>
+
+        <label for="userQuestion">Your Message:</label>
+        <input type="text" id="userQuestion" placeholder="e.g. I want a cheap urban destination" required>
+        <button onclick="sendQuestion()">Ask Botty</button>
+
+        <h2>Botty's Response:</h2>
+        <div id="botAnswer"></div>
+
+        <p><a href="/about">About</a> | <a href="/debug">Debug</a></p>
+    </div>
+
+    <script>
+        function sendQuestion() {
+            const question = document.getElementById('userQuestion').value;
+
+            fetch('/ask', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question: question })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('botAnswer').innerText = data.answer;
+            })
+            .catch(error => {
+                document.getElementById('botAnswer').innerText = 'Error communicating with Botty.';
+                console.error(error);
+            });
+        }
+    </script>
+</body>
+</html>
