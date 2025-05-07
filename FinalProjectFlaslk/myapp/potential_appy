@@ -5,21 +5,23 @@ class TravelBot:
         self.csv_data = csv_data
         self.api_data = api_data
 
+    def get_season_from_input(self, question):
+        for season in ["winter", "spring", "summer", "fall", "autumn"]:
+            if season in question:
+                return "fall" if season == "autumn" else season
+        return None
+
     def extract_temp_range(self, question):
-        # Look for expressions like "70 to 80", "between 60 and 75", "around 75"
         match = re.search(r'between (\d{2,3}) and (\d{2,3})', question)
         if match:
             return int(match.group(1)), int(match.group(2))
-
         match = re.search(r'(\d{2,3}) to (\d{2,3})', question)
         if match:
             return int(match.group(1)), int(match.group(2))
-
         match = re.search(r'around (\d{2,3})', question)
         if match:
             base = int(match.group(1))
-            return base - 3, base + 3  # A +/- 3°F window
-
+            return base - 3, base + 3
         return None
 
     def respond(self, question):
@@ -27,23 +29,31 @@ class TravelBot:
         filtered = self.csv_data.copy()
         score = pd.Series(0, index=filtered.index)
 
-        # --- Temperature Preference ---
-        temp_range = self.extract_temp_range(question)
-        if temp_range:
-            low, high = temp_range
-            # Score by closeness to midpoint of range
-            midpoint = (low + high) / 2
-            distance = (filtered['temperature'] - midpoint).abs()
-            max_distance = distance.max() if distance.max() != 0 else 1
-            score += (1 - (distance / max_distance)) * 10  # Closer = higher score
+        # --- Season Preference ---
+        season = self.get_season_from_input(question)
+        temp_col = f"temperature_{season}" if season else None
+
+        # --- Temperature Scoring Based on Season ---
+        if temp_col and temp_col in filtered.columns:
+            temp_range = self.extract_temp_range(question)
+            if temp_range:
+                low, high = temp_range
+                midpoint = (low + high) / 2
+                distance = (filtered[temp_col] - midpoint).abs()
+                max_distance = distance.max() if distance.max() != 0 else 1
+                score += (1 - (distance / max_distance)) * 10
+            else:
+                # Default preference: closer to 70°F is "pleasant"
+                distance = (filtered[temp_col] - 70).abs()
+                max_distance = distance.max() if distance.max() != 0 else 1
+                score += (1 - (distance / max_distance)) * 8
 
         elif "warm" in question:
             score += (filtered['temperature'] - 65).clip(lower=0)
-
         elif "cold" in question:
             score += (65 - filtered['temperature']).clip(lower=0)
 
-        # --- Setting Preference ---
+        # --- Setting Preferences ---
         setting_preferences = {
             "urban": 10,
             "rural": 10,
@@ -56,19 +66,20 @@ class TravelBot:
             if setting in question:
                 score += (filtered['setting'].str.lower() == setting) * weight
 
-        # --- Flight Cost Preference ---
+        # --- Flight Cost Scoring ---
         if "cheap flight" in question or "cheap" in question or "budget" in question:
             max_cost = filtered['flight_cost'].max()
             normalized_cost = 1 - (filtered['flight_cost'] / max_cost)
             score += normalized_cost * 10
 
-        # --- Check for Input ---
+        # --- Fallback for No Info ---
         if score.sum() == 0:
             return ("Tell me more about your preferences! For example:\n"
-                    "- 'Where can I go that's between 70 and 80 degrees and tropical?'\n"
-                    "- 'Looking for a beach city with temps around 75 and cheap flights'")
+                    "- 'I want to go somewhere tropical in winter'\n"
+                    "- 'Urban cities in summer with temps between 70 and 80'\n"
+                    "- 'Cheap rural destinations for fall'")
 
-        # --- Return Top Matches ---
+        # --- Return Best Matches ---
         top_indices = score.nlargest(3).index
         top_cities = filtered.loc[top_indices, 'city']
         top_scores = score.loc[top_indices].astype(int)
@@ -77,4 +88,4 @@ class TravelBot:
             recommendations = [f"{city} (score: {s})" for city, s in zip(top_cities, top_scores)]
             return "Based on your preferences, consider: " + ", ".join(recommendations)
         else:
-            return "Hmm, I couldn't find a great match. Try adjusting your preferences!"
+            return "I couldn’t find a perfect match, but you could try broadening your request!"
