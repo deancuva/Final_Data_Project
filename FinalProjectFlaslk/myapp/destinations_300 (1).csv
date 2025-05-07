@@ -1,0 +1,301 @@
+city,country,setting,temperature_summer,temperature_winter,temperature_fall,temperature_spring
+Barcelona,Spain,mountainous|beach|urban,82,68,66,67
+Tokyo,Japan,historical|beach,81,46,70,65
+Cape Town,South Africa,urban,69,39,77,71
+Banff,Canada,tropical|historical|urban,79,36,60,55
+Bangkok,Thailand,historical|rural|urban,75,69,79,65
+Reykjavik,Iceland,beach|tropical,82,74,51,56
+Rio de Janeiro,Brazil,tropical|rural|urban,70,60,75,57
+Kyoto,Japan,tropical|mountainous|beach,80,21,68,64
+Santorini,Greece,rural|urban,82,21,72,64
+Buenos Aires,Argentina,urban|beach,74,40,61,59
+Lisbon,Portugal,beach|urban|rural,69,44,65,66
+New York,USA,urban,67,25,62,63
+Los Angeles,USA,tropical|urban,74,68,75,66
+Sydney,Australia,historical|urban|mountainous,74,20,73,74
+Auckland,New Zealand,historical|tropical|rural,90,52,55,67
+Marrakech,Morocco,tropical,81,63,57,68
+Seoul,South Korea,urban|tropical|rural,75,57,65,60
+Paris,France,tropical|urban|rural,82,60,52,67
+London,UK,tropical|beach,92,32,72,70
+Istanbul,Turkey,rural,72,56,77,72
+Dubai,UAE,historical|urban|beach,69,57,53,61
+Moscow,Russia,tropical,69,53,58,71
+Mexico City,Mexico,rural,85,20,71,66
+Lima,Peru,tropical,74,35,69,74
+Prague,Czech Republic,mountainous,93,21,50,68
+Vienna,Austria,beach|historical,76,52,80,69
+Budapest,Hungary,urban,80,65,68,73
+Berlin,Germany,tropical,69,32,65,57
+Warsaw,Poland,beach,87,65,54,71
+Oslo,Norway,urban|beach,93,27,73,68
+Bangkok Region,Thailand,urban|tropical,70,27,78,65
+Seoul Region,South Korea,beach|tropical|mountainous,89,25,68,72
+London Bay,UK,historical|mountainous,69,55,61,64
+Dubai City,UAE,rural|historical|mountainous,91,64,56,71
+Kyoto City,Japan,beach|tropical|historical,70,28,74,67
+Berlin Bay,Germany,urban|beach|rural,72,63,76,62
+Paris Valley,France,beach|rural,71,66,70,68
+Bangkok Region,Thailand,historical,82,66,50,75
+Buenos Aires Bay,Argentina,urban,76,33,71,75
+Oslo City,Norway,beach|rural,77,63,69,58
+Moscow Town,Russia,mountainous,73,47,60,66
+Prague City,Czech Republic,beach|rural,83,50,61,73
+Mexico City Town,Mexico,tropical|mountainous|historical,91,49,71,70
+Rio de Janeiro Valley,Brazil,mountainous,67,30,69,65
+Istanbul Town,Turkey,beach|historical,95,71,76,62
+Warsaw Region,Poland,mountainous|rural,73,58,64,61
+Istanbul Town,Turkey,rural|mountainous|historical,74,33,75,63
+Santorini Region,Greece,rural|beach|urban,77,33,50,57
+Warsaw Town,Poland,mountainous|beach,95,54,54,66
+Bangkok Town,Thailand,tropical|beach,80,36,67,64
+London Region,UK,mountainous,68,36,59,66
+Barcelona Town,Spain,mountainous|historical,87,63,65,73
+Warsaw Town,Poland,urban,67,20,59,62
+Kyoto Valley,Japan,urban|historical,68,63,59,70
+Budapest Valley,Hungary,tropical|beach|mountainous,71,30,53,72
+Kyoto City,Japan,beach|historical|tropical,78,42,75,72
+Warsaw Bay,Poland,tropical|mountainous|beach,88,47,63,70
+Banff Town,Canada,urban,81,37,76,62
+Reykjavik Bay,Iceland,mountainous,82,30,61,57
+Budapest Region,Hungary,urban|rural,73,53,67,73
+Seoul Region,South Korea,urban|historical|rural,94,64,69,74
+New York Bay,USA,urban|beach|rural,67,21,74,58
+Sydney Valley,Australia,beach|tropical|mountainous,72,27,71,73
+Lima Bay,Peru,mountainous|historical,77,46,51,61
+Prague City,Czech Republic,tropical|urban,81,64,75,61
+Moscow Town,Russia,urban,68,71,77,66
+London Bay,UK,tropical|urban,68,45,67,62
+Reykjavik Valley,Iceland,mountainous|beach,67,60,58,59
+New York Region,USA,urban|beach,73,53,50,72
+Lisbon Valley,Portugal,mountainous|rural,92,48,60,74
+Santorini Region,Greece,rural,89,71,65,65
+Bangkok Valley,Thailand,mountainous|rural|urban,72,39,62,64
+Warsaw Region,Poland,beach|rural,69,21,53,74
+Los Angeles Region,USA,historical,77,60,77,56
+Barcelona Valley,Spain,rural,65,61,64,73
+Lima Bay,Peru,urban|rural,72,50,64,57
+Auckland Region,New Zealand,tropical|rural|beach,77,70,70,57
+Oslo Valley,Norway,rural|historical,93,52,50,75
+Reykjavik City,Iceland,rural|mountainous|historical,87,27,62,66
+Reykjavik Town,Iceland,historical,78,59,72,69
+Banff Valley,Canada,rural|urban|beach,93,39,53,59
+Warsaw Town,Poland,mountainous|urban,86,65,64,65
+Oslo Region,Norway,rural,89,62,73,69
+Tokyo Region,Japan,rural|beach|tropical,65,37,64,75
+Sydney Bay,Australia,urban,77,22,79,67
+Tokyo City,Japan,urban,65,61,67,74
+Oslo Valley,Norway,historical|mountainous,84,47,56,67
+Vienna Valley,Austria,historical,94,71,64,55
+Kyoto Town,Japan,rural|beach,83,33,65,67
+New York Region,USA,beach,84,42,78,56
+Seoul Bay,South Korea,beach|rural,78,75,79,56
+Lima Region,Peru,urban|beach|historical,91,54,50,62
+Kyoto Bay,Japan,tropical,84,41,66,61
+Lisbon Region,Portugal,urban,72,46,78,73
+Vienna Valley,Austria,historical|rural,68,45,75,69
+Lima City,Peru,beach|mountainous|rural,67,27,68,75
+Vienna City,Austria,rural|urban,84,35,60,55
+Cape Town Region,South Africa,beach|rural,75,28,69,59
+Berlin Region,Germany,beach,77,73,78,65
+Vienna Region,Austria,beach,71,55,72,68
+Tokyo Bay,Japan,tropical|mountainous|beach,69,45,68,73
+Cape Town Bay,South Africa,historical|tropical,91,67,75,64
+Buenos Aires Valley,Argentina,tropical|rural,87,62,74,74
+Rio de Janeiro Region,Brazil,rural|beach|tropical,82,50,79,64
+Berlin City,Germany,beach|mountainous|rural,94,33,65,60
+Barcelona Valley,Spain,urban|beach|rural,78,67,66,67
+Dubai City,UAE,mountainous|beach,81,34,52,69
+Tokyo City,Japan,urban,92,43,74,61
+Cape Town City,South Africa,tropical|mountainous|rural,90,20,67,65
+Banff Bay,Canada,urban|beach,80,43,78,72
+Mexico City Region,Mexico,rural|mountainous,78,60,79,75
+Buenos Aires Valley,Argentina,tropical,70,39,50,66
+Vienna Valley,Austria,tropical|urban|mountainous,92,45,69,68
+London City,UK,urban|historical|rural,87,62,79,71
+Moscow Valley,Russia,rural,94,52,76,75
+Mexico City City,Mexico,urban|rural,70,69,72,56
+Paris Bay,France,mountainous|tropical,78,37,54,59
+Dubai City,UAE,tropical|beach|historical,69,27,73,66
+Budapest Town,Hungary,mountainous,84,67,55,57
+Oslo City,Norway,tropical|historical|mountainous,75,30,64,64
+Dubai Bay,UAE,beach|rural,95,23,80,74
+Rio de Janeiro Valley,Brazil,historical,79,54,78,58
+Marrakech City,Morocco,beach|rural,94,69,59,66
+Tokyo Town,Japan,mountainous|historical,68,66,68,58
+London Town,UK,rural,88,26,75,65
+Mexico City Region,Mexico,urban,72,52,73,61
+Cape Town Region,South Africa,historical,88,56,76,75
+Bangkok City,Thailand,historical|urban|beach,71,39,59,65
+Warsaw Valley,Poland,historical|rural|mountainous,93,58,73,65
+Prague Town,Czech Republic,beach,87,20,65,66
+Santorini Town,Greece,rural|tropical|urban,75,35,61,69
+Sydney Town,Australia,historical|urban,86,66,69,63
+Berlin Town,Germany,historical|mountainous|rural,65,33,67,72
+Budapest Bay,Hungary,urban,67,49,60,58
+Lima Valley,Peru,historical|mountainous|tropical,74,45,60,71
+Moscow Valley,Russia,tropical,86,33,64,66
+New York Valley,USA,urban,87,20,60,61
+Istanbul Town,Turkey,mountainous|urban,83,31,78,56
+Buenos Aires Bay,Argentina,tropical,65,41,80,62
+Cape Town City,South Africa,tropical|beach,65,72,55,72
+Dubai City,UAE,mountainous|urban|tropical,85,20,75,58
+Marrakech Town,Morocco,mountainous|beach,92,26,67,57
+Berlin Bay,Germany,urban|historical,67,32,62,58
+Santorini Bay,Greece,historical|mountainous|urban,70,65,67,71
+Vienna City,Austria,historical|urban|rural,67,50,70,72
+Istanbul Bay,Turkey,rural|urban,80,65,77,73
+Dubai Valley,UAE,mountainous,76,41,71,59
+Prague Bay,Czech Republic,tropical,85,24,57,62
+Berlin Valley,Germany,historical|beach,73,32,72,61
+Seoul Bay,South Korea,urban|beach,80,60,67,59
+Dubai Region,UAE,urban|beach,85,27,70,57
+Bangkok Bay,Thailand,tropical,80,66,78,72
+Buenos Aires Bay,Argentina,historical,83,59,67,61
+Santorini Bay,Greece,beach|tropical|mountainous,68,26,62,66
+Lisbon Region,Portugal,historical|rural,87,52,62,71
+Banff Bay,Canada,mountainous,76,58,55,65
+Seoul Valley,South Korea,beach,72,51,75,59
+Buenos Aires Bay,Argentina,mountainous|beach|urban,86,70,61,66
+Prague Valley,Czech Republic,mountainous,93,75,72,73
+Los Angeles City,USA,beach,85,71,79,74
+New York Valley,USA,historical|urban,65,28,68,70
+Barcelona Town,Spain,beach|rural|mountainous,81,36,66,66
+Paris City,France,rural,86,35,57,59
+Banff Valley,Canada,tropical,76,63,61,72
+Bangkok City,Thailand,mountainous|tropical|rural,66,34,69,75
+Berlin Town,Germany,tropical|historical|urban,90,38,50,64
+Berlin Town,Germany,mountainous,79,30,73,63
+Cape Town Town,South Africa,beach|urban|tropical,73,53,59,74
+Barcelona Bay,Spain,mountainous|beach,73,66,64,68
+Santorini City,Greece,beach|tropical,88,27,68,74
+Los Angeles City,USA,historical,92,32,63,68
+Santorini Bay,Greece,tropical|historical|beach,81,47,58,60
+Kyoto City,Japan,urban,71,28,66,74
+Istanbul City,Turkey,urban|tropical|historical,71,55,70,70
+Santorini Bay,Greece,tropical|rural,67,29,59,55
+Reykjavik Region,Iceland,urban,84,35,71,71
+Auckland Region,New Zealand,tropical|historical,85,35,57,63
+Rio de Janeiro Valley,Brazil,historical,74,48,72,75
+Lisbon Bay,Portugal,rural|mountainous|historical,71,46,51,55
+London City,UK,tropical,92,48,63,70
+Vienna Region,Austria,urban|historical|rural,87,53,73,59
+Tokyo Bay,Japan,mountainous,78,23,64,74
+Moscow City,Russia,tropical|mountainous,78,65,69,69
+Bangkok Bay,Thailand,tropical|urban,94,46,50,59
+Istanbul City,Turkey,historical|mountainous|rural,91,53,54,72
+Mexico City City,Mexico,rural|tropical,69,44,56,62
+Sydney Valley,Australia,urban,93,67,75,72
+Tokyo Bay,Japan,urban|rural,84,48,73,69
+Los Angeles City,USA,historical,68,50,67,67
+Mexico City City,Mexico,beach|tropical|mountainous,95,26,62,60
+Rio de Janeiro Valley,Brazil,rural,82,29,73,61
+London Town,UK,historical,83,52,73,73
+Seoul Region,South Korea,tropical|urban,85,72,58,60
+Marrakech Town,Morocco,tropical,73,41,70,56
+Prague City,Czech Republic,tropical,82,45,68,61
+Kyoto Bay,Japan,mountainous,69,61,53,65
+Prague City,Czech Republic,beach|mountainous|historical,87,26,70,69
+Moscow Town,Russia,rural|mountainous,86,56,73,65
+Budapest Region,Hungary,urban|beach|tropical,85,61,65,69
+Sydney Town,Australia,beach|mountainous|tropical,95,34,68,57
+Bangkok Town,Thailand,rural|urban|tropical,66,52,59,74
+Los Angeles City,USA,mountainous|beach,93,32,60,63
+Cape Town Region,South Africa,urban,75,38,59,68
+Bangkok Town,Thailand,beach|historical|mountainous,80,57,77,73
+Barcelona Town,Spain,historical,67,72,62,63
+Santorini City,Greece,tropical,78,39,69,70
+Santorini Town,Greece,historical,95,66,71,58
+Bangkok Valley,Thailand,historical|rural|beach,65,26,70,74
+Tokyo City,Japan,tropical,86,73,54,55
+Buenos Aires Valley,Argentina,urban|mountainous,95,52,50,70
+Sydney Bay,Australia,mountainous|rural,67,70,63,73
+Banff Bay,Canada,tropical|beach,84,67,76,58
+Los Angeles City,USA,tropical|mountainous,86,36,75,68
+Paris City,France,historical|rural|urban,92,44,68,65
+Dubai Bay,UAE,urban|rural,94,68,64,69
+Dubai Region,UAE,beach,74,51,58,71
+Kyoto Bay,Japan,mountainous,68,63,62,58
+Istanbul Town,Turkey,mountainous|urban|historical,79,57,56,73
+Warsaw City,Poland,beach|tropical|urban,89,42,58,67
+Vienna City,Austria,mountainous,78,21,53,68
+Santorini Valley,Greece,urban|beach,85,28,74,67
+Seoul Bay,South Korea,mountainous|tropical,73,32,61,66
+Barcelona City,Spain,urban|historical,90,34,62,60
+Auckland Town,New Zealand,historical|beach|tropical,92,30,59,68
+Rio de Janeiro Valley,Brazil,mountainous|rural,87,25,50,59
+Rio de Janeiro City,Brazil,mountainous,90,30,52,72
+Warsaw Region,Poland,mountainous|urban|historical,93,24,58,61
+Lisbon Region,Portugal,mountainous,78,20,64,61
+Seoul City,South Korea,rural|historical|urban,65,28,51,69
+Reykjavik Region,Iceland,tropical,91,49,71,62
+Bangkok Valley,Thailand,mountainous|urban|tropical,76,57,65,68
+Budapest Valley,Hungary,historical|beach,94,37,75,66
+Paris Town,France,beach|mountainous|historical,74,26,56,63
+Kyoto Region,Japan,historical,87,52,54,62
+Banff Bay,Canada,tropical|beach,68,39,76,58
+Kyoto City,Japan,urban,76,43,67,63
+Warsaw Town,Poland,rural|historical,83,27,50,63
+Vienna Town,Austria,mountainous|tropical,66,41,66,66
+Istanbul Region,Turkey,tropical|urban|mountainous,89,56,67,62
+Rio de Janeiro Town,Brazil,rural|mountainous,77,28,60,59
+Cape Town Bay,South Africa,urban,76,34,51,55
+Los Angeles Town,USA,beach|mountainous,87,52,54,67
+Marrakech City,Morocco,rural,74,51,64,56
+Los Angeles City,USA,rural|beach,90,54,67,69
+Banff Region,Canada,mountainous|rural,80,71,71,56
+Oslo City,Norway,urban|tropical|beach,92,67,72,69
+Los Angeles Town,USA,tropical|historical|rural,76,75,57,65
+Budapest Region,Hungary,beach|mountainous,83,68,72,67
+Istanbul Town,Turkey,historical|rural|tropical,95,71,68,55
+Vienna Bay,Austria,beach|urban,94,23,66,73
+Lisbon Valley,Portugal,rural|beach,86,73,61,71
+Kyoto Town,Japan,rural,78,36,61,72
+Berlin Region,Germany,beach|tropical,78,26,68,70
+Lisbon Valley,Portugal,beach|tropical|mountainous,76,61,77,70
+Istanbul Valley,Turkey,beach|urban,91,49,75,75
+Reykjavik Town,Iceland,urban,84,70,69,73
+Buenos Aires Bay,Argentina,rural|urban|historical,77,40,74,61
+Budapest City,Hungary,mountainous,71,50,58,73
+Auckland Valley,New Zealand,historical|urban,70,23,72,62
+Mexico City Town,Mexico,mountainous|rural|urban,90,66,63,63
+Istanbul Region,Turkey,urban|tropical|mountainous,95,53,70,65
+Rio de Janeiro City,Brazil,historical|urban,87,51,72,58
+Moscow Bay,Russia,rural|beach|mountainous,89,25,78,59
+Lima City,Peru,beach,92,72,64,71
+Paris Town,France,mountainous|historical,77,43,69,60
+London Valley,UK,tropical|mountainous,72,22,72,72
+Kyoto Bay,Japan,urban|beach,79,38,80,68
+Dubai Town,UAE,historical|beach|urban,79,75,62,66
+London Town,UK,mountainous|rural|beach,80,62,53,68
+Auckland Region,New Zealand,urban|mountainous|rural,71,56,79,71
+Tokyo Region,Japan,beach|tropical,94,48,59,55
+Istanbul Town,Turkey,urban|rural,95,63,55,63
+Reykjavik Town,Iceland,historical,69,70,51,68
+Moscow City,Russia,urban|historical|tropical,87,68,77,55
+Banff Town,Canada,urban|historical,79,62,56,57
+Los Angeles Bay,USA,historical|beach,66,50,65,57
+New York Valley,USA,tropical|historical|urban,74,33,79,70
+Tokyo Region,Japan,mountainous|historical,72,37,56,67
+Kyoto Bay,Japan,historical|tropical|rural,76,68,62,55
+Kyoto Valley,Japan,rural|beach|tropical,91,61,79,60
+New York Region,USA,beach,66,55,79,61
+Banff Bay,Canada,historical,92,36,58,71
+Vienna Valley,Austria,tropical|historical|urban,80,30,77,66
+Rio de Janeiro Region,Brazil,beach,75,22,69,70
+Sydney Town,Australia,historical|mountainous|tropical,72,55,62,67
+Budapest City,Hungary,tropical,74,37,60,71
+New York Bay,USA,urban|beach|rural,76,31,58,71
+Los Angeles Bay,USA,beach,70,71,76,73
+New York Valley,USA,urban,85,28,51,75
+Barcelona Town,Spain,beach|historical,81,68,76,55
+Dubai Region,UAE,tropical|mountainous,66,36,68,72
+Sydney Valley,Australia,tropical|historical,76,25,63,67
+New York City,USA,historical|urban|beach,92,61,55,61
+Tokyo City,Japan,urban|mountainous|beach,81,25,65,67
+Warsaw Valley,Poland,mountainous,89,43,69,62
+Santorini Bay,Greece,tropical|mountainous|urban,87,50,60,67
+Barcelona City,Spain,rural|beach|urban,80,39,55,66
+London City,UK,historical|beach|rural,76,57,78,70
+Marrakech Town,Morocco,rural|beach|urban,69,53,61,68
+Los Angeles City,USA,urban|mountainous,93,58,74,74
