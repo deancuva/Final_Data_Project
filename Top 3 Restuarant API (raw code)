@@ -1,0 +1,50 @@
+import requests
+def geocode_city(city, api_key):
+    url = f"https://api.geoapify.com/v1/geocode/search?text={city}&limit=1&apiKey={api_key}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        result = response.json()
+        features = result.get("features", [])
+        if features:
+            coords = features[0]["geometry"]["coordinates"]
+            return coords[1], coords[0]  # lat, lon
+    return None, None
+
+
+
+def get_top_restaurants(lat, lon, api_key, radius=5000, limit=10):
+    url = (
+        f"https://api.geoapify.com/v2/places?"
+        f"categories=catering.restaurant&"
+        f"filter=circle:{lon},{lat},{radius}&"
+        f"limit={limit}&"
+        f"apiKey={api_key}"
+    )
+    response = requests.get(url)
+    if response.status_code == 200:
+        features = response.json().get("features", [])
+        return features
+    return []
+
+
+
+def show_restaurants_by_city(cities, api_key):
+    for city in cities:
+        print(f"🍽️ Top Restaurants in {city}:\n" + "-"*40)
+        lat, lon = geocode_city(city, api_key)
+        if lat and lon:
+            restaurants = get_top_restaurants(lat, lon, api_key)
+            for i, place in enumerate(restaurants[:3]):
+                props = place["properties"]
+                print(f"{i+1}. {props.get('name', 'N/A')} - {props.get('formatted', 'N/A')}")
+                print(f"   Cuisine: {props.get('cuisine', 'Unknown')}")
+                print(f"   Website: {props.get('website', 'N/A')}\n")
+        else:
+            print("Could not find coordinates for this city.\n")
+
+
+API_KEY = "bf3563606ea84aae982b322ba8d0f8c6"
+cities = ["Berlin", "Munich", "Hamburg"]
+
+show_restaurants_by_city(cities, API_KEY)
+
