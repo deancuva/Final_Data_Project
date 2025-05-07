@@ -1,0 +1,37 @@
+class TravelBot:
+    def __init__(self, csv_data, api_data):
+        self.csv_data = csv_data
+        self.api_data = api_data
+
+    def respond(self, question):
+        question = question.lower()
+        filtered = self.csv_data.copy()
+
+        score = pd.Series(0, index=filtered.index)
+
+        # Example scoring logic:
+        if "warm" in question:
+            score += (filtered['temperature'] - 65).clip(lower=0)  # prioritize warmth
+
+        if "cold" in question:
+            score += (65 - filtered['temperature']).clip(lower=0)  # prioritize cold
+
+        if "urban" in question:
+            score += (filtered['setting'] == 'urban') * 10
+
+        if "rural" in question:
+            score += (filtered['setting'] == 'rural') * 10
+
+        if "cheap flight" in question:
+            max_cost = filtered['flight_cost'].max()
+            normalized_cost = 1 - (filtered['flight_cost'] / max_cost)
+            score += normalized_cost * 10
+
+        # Get top 3
+        top_indices = score.nlargest(3).index
+        top_cities = filtered.loc[top_indices, 'city']
+
+        if not top_cities.empty:
+            return f"How about: {', '.join(top_cities)}?"
+        else:
+            return "Hmm... I couldn't find anything matching that. Try asking differently!"
