@@ -1,9 +1,13 @@
+import requests
 import re
 
+my_travel_bot = TravelBot(travel_df, api_key="bf3563606ea84aae982b322ba8d0f8c6")
+
+
 class TravelBot:
-    def __init__(self, csv_data, api_data):
+    def __init__(self, csv_data, api_key):
         self.csv_data = csv_data
-        self.api_data = api_data
+        self.api_key = api_key
 
     def get_season_from_input(self, question):
         for season in ["winter", "spring", "summer", "fall", "autumn"]:
@@ -24,16 +28,38 @@ class TravelBot:
             return base - 3, base + 3
         return None
 
+    def geocode_city(self, city):
+        url = f"https://api.geoapify.com/v1/geocode/search?text={city}&limit=1&apiKey={self.api_key}"
+        response = requests.get(url)
+        if response.status_code == 200:
+            result = response.json()
+            features = result.get("features", [])
+            if features:
+                coords = features[0]["geometry"]["coordinates"]
+                return coords[1], coords[0]  # lat, lon
+        return None, None
+
+    def get_top_restaurants(self, lat, lon, radius=5000, limit=3):
+        url = (
+            f"https://api.geoapify.com/v2/places?"
+            f"categories=catering.restaurant&"
+            f"filter=circle:{lon},{lat},{radius}&"
+            f"limit={limit}&"
+            f"apiKey={self.api_key}"
+        )
+        response = requests.get(url)
+        if response.status_code == 200:
+            return response.json().get("features", [])
+        return []
+
     def respond(self, question):
         question = question.lower()
         filtered = self.csv_data.copy()
         score = pd.Series(0, index=filtered.index)
 
-        # --- Season Preference ---
+        # Season-based temperature scoring
         season = self.get_season_from_input(question)
         temp_col = f"temperature_{season}" if season else None
-
-        # --- Temperature Scoring Based on Season ---
         if temp_col and temp_col in filtered.columns:
             temp_range = self.extract_temp_range(question)
             if temp_range:
@@ -43,17 +69,15 @@ class TravelBot:
                 max_distance = distance.max() if distance.max() != 0 else 1
                 score += (1 - (distance / max_distance)) * 10
             else:
-                # Default preference: closer to 70°F is "pleasant"
                 distance = (filtered[temp_col] - 70).abs()
                 max_distance = distance.max() if distance.max() != 0 else 1
                 score += (1 - (distance / max_distance)) * 8
-
         elif "warm" in question:
             score += (filtered['temperature'] - 65).clip(lower=0)
         elif "cold" in question:
             score += (65 - filtered['temperature']).clip(lower=0)
 
-        # --- Setting Preferences ---
+        # Setting preference scoring
         setting_preferences = {
             "urban": 10,
             "rural": 10,
@@ -61,31 +85,36 @@ class TravelBot:
             "tropical": 12,
             "historical": 8
         }
-
         for setting, weight in setting_preferences.items():
             if setting in question:
                 score += (filtered['setting'].str.lower() == setting) * weight
 
-        # --- Flight Cost Scoring ---
-        if "cheap flight" in question or "cheap" in question or "budget" in question:
-            max_cost = filtered['flight_cost'].max()
-            normalized_cost = 1 - (filtered['flight_cost'] / max_cost)
-            score += normalized_cost * 10
-
-        # --- Fallback for No Info ---
         if score.sum() == 0:
             return ("Tell me more about your preferences! For example:\n"
-                    "- 'I want to go somewhere tropical in winter'\n"
-                    "- 'Urban cities in summer with temps between 70 and 80'\n"
-                    "- 'Cheap rural destinations for fall'")
+                    "- 'Tropical cities in winter with temps around 80'\n"
+                    "- 'Beach destinations between 70 and 78 degrees in summer'")
 
-        # --- Return Best Matches ---
+        # Get top cities
         top_indices = score.nlargest(3).index
         top_cities = filtered.loc[top_indices, 'city']
         top_scores = score.loc[top_indices].astype(int)
 
-        if not top_cities.empty:
-            recommendations = [f"{city} (score: {s})" for city, s in zip(top_cities, top_scores)]
-            return "Based on your preferences, consider: " + ", ".join(recommendations)
-        else:
-            return "I couldn’t find a perfect match, but you could try broadening your request!"
+        response = "🎯 Based on your preferences, consider:\n\n"
+        for city, s in zip(top_cities, top_scores):
+            response += f"🏙️ {city} (match score: {s})\n"
+            lat, lon = self.geocode_city(city)
+            if lat and lon:
+                restaurants = self.get_top_restaurants(lat, lon)
+                if restaurants:
+                    for i, r in enumerate(restaurants):
+                        name = r["properties"].get("name", "Unnamed")
+                        addr = r["properties"].get("formatted", "No address listed")
+                        cuisine = r["properties"].get("cuisine", "Cuisine unknown")
+                        response += f"   🍽️ {i+1}. {name} — {cuisine}\n       📍 {addr}\n"
+                else:
+                    response += "   🍽️ No restaurant data available right now.\n"
+            else:
+                response += "   🌐 Could not find coordinates for this city.\n"
+            response += "\n"
+
+        return response.strip()
