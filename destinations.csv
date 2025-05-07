@@ -1,0 +1,11 @@
+city,country,temperature,flight_cost,setting
+Lisbon,Portugal,77,600,urban
+Bangkok,Thailand,90,700,urban
+Reykjavik,Iceland,50,850,rural
+Barcelona,Spain,80,650,urban
+Cairo,Egypt,95,550,urban
+Oslo,Norway,60,900,urban
+Buenos Aires,Argentina,70,500,urban
+Tokyo,Japan,75,750,urban
+Nairobi,Kenya,85,620,rural
+Helsinki,Finland,55,880,urban
