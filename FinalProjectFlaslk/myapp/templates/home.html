@@ -9,20 +9,30 @@
 <body>
     <div class="container">
         <h1>Chat with Botty</h1>
+        <h4>What are you looking for in your vacation?</h4>
+        <p>We made Botty for foodies who love to travel and with that in mind, we’d love some information about what you’re looking for. In return, we’ll provide you with some great restaurants you should check out when you hopefully make it there!</p>
+        <p>Try giving Botty the season you’re looking to travel during, your desired temperature range (in Fahrenheit please!), and the setting you’re looking for (urban, rural, mountainous, beach, tropical). Enjoy!</p>
 
-        <label for="userQuestion">Your Message:</label>
-        <input type="text" id="userQuestion" placeholder="e.g. I want a cheap urban destination" required>
+        <label for="userQuestion">What are you thinking?</label>
+        <input type="text" id="userQuestion" placeholder="Try typing something like: I want a tropical, warm beach vacation" required>
         <button onclick="sendQuestion()">Ask Botty</button>
+        <span id="loading" style="display:none; margin-left: 10px;">🤔 Botty is thinking...</span>
 
-        <h2>Botty's Response:</h2>
-        <div id="botAnswer"></div>
+        <h2>Conversation History</h2>
+        <div id="chatHistory" style="white-space: pre-wrap; margin-top: 20px;"></div>
 
         <p><a href="/about">About</a> | <a href="/debug">Debug</a></p>
     </div>
 
     <script>
         function sendQuestion() {
-            const question = document.getElementById('userQuestion').value;
+            const questionInput = document.getElementById('userQuestion');
+            const question = questionInput.value.trim();
+            const loading = document.getElementById('loading');
+
+            if (!question) return;
+
+            loading.style.display = 'inline';
 
             fetch('/ask', {
                 method: 'POST',
@@ -31,11 +41,19 @@
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('botAnswer').innerText = data.answer;
+                const chatHistory = document.getElementById('chatHistory');
+                const newEntry = `🧑 You: ${question}\n🤖 Botty: ${data.answer}\n\n`;
+                chatHistory.innerText = newEntry + chatHistory.innerText;
+                questionInput.value = '';
             })
             .catch(error => {
-                document.getElementById('botAnswer').innerText = 'Error communicating with Botty.';
+                const chatHistory = document.getElementById('chatHistory');
+                const errorEntry = `🧑 You: ${question}\n🤖 Botty: Error communicating with the server.\n\n`;
+                chatHistory.innerText = errorEntry + chatHistory.innerText;
                 console.error(error);
+            })
+            .finally(() => {
+                loading.style.display = 'none';
             });
         }
     </script>
